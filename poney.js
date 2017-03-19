@@ -1,8 +1,12 @@
+const{Deadpool}  = require ('./deadpool');
+var hour=0;
+this.nightDayInterval = setInterval(() => hour+=1, 500);
+
 class Poney {
   constructor() {
-    this.restInterval = setInterval(() => this.seReposer(),500);
+    this.restInterval = setInterval(() => this.seReposer(), 500);
     this.energy = 0;
-    //this.master = new Deadpool();
+    this.master = new Deadpool();
     this.isUnicorn = false;
     //Deadpool.pushPoney(this);
   }
@@ -11,7 +15,7 @@ class Poney {
     this.energy += 10;
 
     console.log(`ZZZZZZZzzzzzzzzzzzzzzz ${this.energy}`);
-    if (this.energy > 100) {
+    if (this.energy === 100) {
       console.log('quoi?! mon Poney évolue');
       this.evolve();
     }
@@ -22,20 +26,19 @@ class Poney {
   }
 
   evolve() {
-    console.log('votre poney est maintenant un licorne')
-    /*Deadpool.evolveMeSenpaiiii()
-     .then(() => this.isUnicorn = true)
-     .catch(() => console.log('FU Senpai'))
-     .finally(() => this.energy = 0);*/
-    this.isUnicorn = true;
-    console.log(`${this.isUnicorn}`);
+    this.master.helptransformation(this.energy)
+      .then(() => this.isUnicorn = true)
+      .catch(() => console.log('FU Senpai'))
+    this.energy = 0
+    setTimeout(() => {
+      console.log(`${this.isUnicorn}`);
 
-    this.energy = 0;
-    this.getTransformed();
+      this.getTransformed();
+    },300)
   }
-  getTransformed()
-  {
-    this.isUnicorn=false;
+
+  getTransformed() {
+    this.isUnicorn = false;
     console.log(`${this.isUnicorn}`);
   }
 }
