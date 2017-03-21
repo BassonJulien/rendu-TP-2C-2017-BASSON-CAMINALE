@@ -16,33 +16,46 @@ class Poney {
       if (time.nuite === true) {
         if (this.isUnicorn === false) {
           this.energy += 20;
+          if (this.energy >= 100) {
+            this.energy = 100;
+          }
           console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow + `   le poney a : ${this.energy}` + ' PV'.yellow); // rainbow
+
         }
-        if (this.energy >= 100) {
-          this.energy = 100;
+        if (this.isUnicorn === true) {
+          if (this.energy >= 100) {
+            this.energy = 100;
+          }
+          console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow + `   la licorne a : ${this.energy}` + ' PV'.yellow); // rainbow
+
         }
+
       }
 
-      if (this.energy >= 90) {
-        this.energy = 100;
+
+      // cas ou il fait jour
+      if (time.nuite === false) {
+        if (this.isUnicorn === true) {
+          if (this.energy >= 100) {
+            this.energy = 0;
+          }
+          console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow + `  la licorne a : ${this.energy}` + ' PV'.yellow); // rainbow
+
+        }
+        if (this.isUnicorn === false) {
+          this.energy += 10;
+          if (this.energy >= 100) {
+            this.energy = 0;
+          }
+          console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow + `  le poney a : ${this.energy}` + ' PV'.yellow); // rainbow
+
+        }
+
       }
     }
 
 
-    // cas ou il fait jour
-    if (time.nuite === false) {
-      if (this.isUnicorn === true) {
-        this.energy += 10;
-        console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow + `  la licorne a : ${this.energy}` + ' PV'.yellow); // rainbow
-      }
-      if (this.energy >= 100) {
-        this.energy = 0;
-      }
-    }
   }
-
-
 }
-
 
 module.exports = {Poney};

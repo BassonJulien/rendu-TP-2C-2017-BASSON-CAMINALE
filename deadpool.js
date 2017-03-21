@@ -6,7 +6,7 @@ class Deadpool {
     const poney = new Poney();
     this.energie = 80;
     this.maxEnergieDeadpool = 100;
-    this.EnergieInterval = setInterval(() => this.EnergieDeadPool(), 1000);
+    this.EnergieInterval = setInterval(() => this.EnergieDeadPool(), 700);
 
 
   }
