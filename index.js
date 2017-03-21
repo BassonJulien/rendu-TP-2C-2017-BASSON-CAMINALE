@@ -34,3 +34,15 @@ transformationInterval = setInterval(() => {
       });
   }, 700);
 
+regenerationInterval = setInterval(() => {
+  var numero1=Math.floor((Math.random() * nbPoney) + 0);
+  dead.regeneration(TabPoney[numero1],numero1)
+    .then(() => {
+      console.log('\n'.green);
+
+    })
+    .catch(() => {
+      console.log('\n');
+
+    });
+}, 700);

@@ -16,7 +16,7 @@ class Poney {
         this.energy += 20;
         console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow+`   le poney a : ${this.energy}`+' PV'.yellow); // rainbow
       }
-      if (this.energy >= 100) {
+      if (this.energy >= 90) {
         this.energy = 100;
       }
     }
