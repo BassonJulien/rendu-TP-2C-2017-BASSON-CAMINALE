@@ -9,18 +9,24 @@ class Poney {
   }
 
   seReposer() {
+
+    // cas ou il fait nuit
     if(time.nuite===true) {
-      if(this.isUnicorn===true) {
+      if(this.isUnicorn===false) {
         this.energy += 20;
-        console.log(`ZZZZZZZzzzzzzzzzzzzzzz ${this.energy}`.rainbow); // rainbow
+        console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow+`   le poney a : ${this.energy}`+' PV'.yellow); // rainbow
       }
       if (this.energy >= 100) {
-        this.energy = 0;
+        this.energy = 100;
       }
     }
+
+    // cas ou il fait jour
     if(time.nuite===false) {
-      this.energy += 10;
-      console.log(`ZZZZZZZzzzzzzzzzzzzzzz ${this.energy}`.rainbow); // rainbow
+      if(this.isUnicorn===true) {
+        this.energy += 10;
+        console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow+`  la licorne a : ${this.energy}`+' PV'.yellow); // rainbow
+      }
       if (this.energy >= 100) {
         this.energy = 0;
       }
