@@ -1,4 +1,8 @@
 const {Poney}=require('./poney');
+const {CycleTime}=require('./cycletime');
+const time = new CycleTime();
+const coeff = 5;
+
 class Deadpool {
 
   constructor() {
@@ -6,19 +10,19 @@ class Deadpool {
     const poney = new Poney();
     this.energie = 80;
     this.maxEnergieDeadpool = 100;
-    this.EnergieInterval = setInterval(() => this.EnergieDeadPool(), 700);
+    this.EnergieInterval = setInterval(() => this.EnergieDeadPool(), 500);
 
 
   }
 
-  helptransformation(tab, numero) {
+  helptransformation(tab, nbponey) {
     return new Promise((resolve, reject) => {
-
       setTimeout(() => {
-        if (tab.energy >= 50 && tab.isUnicorn === false) {
-
+        if (tab.energy >= 50 && tab.isUnicorn === false && nbponey < 14 &&tab.isAvailable===true) {
+          //on ne veut pas plus de 15 poney sinon la chance d'évolution est trop faible
           if (tab.energy >= 50 && tab.energy <= 70) {
-            let chance = Math.floor((Math.random() * 10) + 1);
+            //gere les chances de succes de facon random + en prenant compte le nbr de poney
+            let chance = (Math.floor((Math.random() * 15) + 1)) * (coeff / nbponey);
             if (chance >= 10) {
               console.log('ohohoh TRANSFORMATION ?!'.inverse + '\n');
               tab.isUnicorn = true;
@@ -27,7 +31,7 @@ class Deadpool {
             }
           }
           if (tab.energy >= 71 && tab.energy < 100) {
-            let chance1 = Math.floor((Math.random() * 10) + 7);
+            let chance1 = Math.floor((Math.random() * 15) + 7) * (coeff / nbponey);
             if (chance1 >= 10) {
               console.log('ohohoh TRANSFORMATION ?!'.inverse + '\n');
               tab.isUnicorn = true;
@@ -54,8 +58,15 @@ class Deadpool {
 
   EnergieDeadPool() {
     if (this.energie > 0) {
-      this.energie--;
-      console.log('deadpool :'.underline.green + this.energie + ' PV'.green + '\n')
+      if (time.nuite === true) {
+        this.energie -= 2;
+        console.log('deadpool :'.underline.green + this.energie + ' PV'.green + '\n');
+      }
+      else {
+
+        this.energie--;
+        console.log('deadpool :'.underline.green + this.energie + ' PV'.green + '\n');
+      }
     }
   }
 
@@ -79,4 +90,4 @@ class Deadpool {
     });
   }
 }
-  module.exports = {Deadpool};
+module.exports = {Deadpool};
