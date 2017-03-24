@@ -1,0 +1,29 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node index.js",
+    "clear-project": "rm -rf node_modules npm-debug.log"
+  },
+  "xo": {
+    "esnext": true,
+    "envs ": [
+      "node",
+      "mocha"
+    ],
+    "space": 2,
+    "rules": {
+      "max-len": [
+        "error",
+        80,
+        2
+      ]
+    },
+    "ignores": [
+      "Gruntfile .js"
+    ]
+  },
+  "dependencies": {
+    "colors": "^1.1.2"
+  }
+}

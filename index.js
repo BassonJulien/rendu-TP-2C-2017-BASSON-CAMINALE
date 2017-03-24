@@ -21,7 +21,6 @@ spideyInterval = setInterval(() => {
       tabPoney[numero].isAvailable = true;
     })
     .catch(() => {
-
     });
 }, 5000);
 
@@ -30,11 +29,9 @@ transformationInterval = setInterval(() => {
   dead.helptransformation(tabPoney[numero], nbPoney)
     .then(() => {
       console.log('evolution du poney en licorne'.inverse.green + '\n \n');
-
     })
     .catch(() => {
       console.log('l evolution du poney à echoue'.inverse.red + '\n \n');
-
     });
 }, 1001);
 
@@ -43,10 +40,8 @@ regenerationInterval = setInterval(() => {
   dead.regeneration(tabPoney[numero1], numero1)
     .then(() => {
       console.log('\n'.green);
-
     })
     .catch(() => {
       console.log('\n');
-
     });
 }, 900);
