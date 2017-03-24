@@ -20,6 +20,8 @@ class Poney {
   }
 
   rest() {
+
+
     if (this.isAvailable === true) {
       if (this.night === true) {
         if (this.isUnicorn === false) {

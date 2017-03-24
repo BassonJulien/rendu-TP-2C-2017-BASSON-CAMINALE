@@ -1,13 +1,22 @@
 
 const coeff = 5;
+let instance = null;
+const EventEmitter = require('events').EventEmitter;
+
 
 class Deadpool {
+
   constructor(ev) {
-    this.energyDeadpool = 80;
-    this.maxEnergyDeadpool = 100;
-    this.night = null;
-    this.startListeners(ev);
-    this.energieInterval = setInterval(() => this.energyDeadPool(), 500);
+    if (!instance) {
+      instance = this;
+      this.energyDeadpool = 80;
+      this.maxEnergyDeadpool = 100;
+      this.night = null;
+      this.startListeners(ev);
+
+      this.EnergieInterval = setInterval(() => this.energyDeadPool(), 500);
+    }
+    return instance;
   }
 
   startListeners(ev) {
@@ -15,6 +24,7 @@ class Deadpool {
       if (period === 'night') {
         this.night = true;
       } else {
+
         this.night = false;
       }
     });
@@ -49,6 +59,9 @@ class Deadpool {
                 tab.isUnicorn = true;
                 resolve();
               }
+            }
+            else{
+              tab.energyPoney=0;
             }
           }
         } else {

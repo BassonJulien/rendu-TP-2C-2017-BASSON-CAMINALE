@@ -9,13 +9,22 @@ const dead = new Deadpool(cycleEvents);
 const cycle = new CycleTime();
 const spidey = new Spiderman();
 
-tabPoney = [];
-for (var iVal = 0; iVal < nbPoney; iVal++) {
+const tabPoney = [];
+for (let iVal = 0; iVal < nbPoney; iVal++) {
   tabPoney.push(new Poney(cycleEvents));
 }
 
+const superiorPow = number => {
+  number = String(number) +'xx';
+  let pow = '1';
+  while  (pow.length < number.length) {
+    pow += '0';
+  }
+  return Number(pow);
+};
+
 spideyInterval = setInterval(() => {
-  var numero = Math.floor((Math.random() * nbPoney) + 0);
+  const numero = Math.floor((Math.random() * superiorPow(tabPoney.length)) % tabPoney.length);
   spidey.rodeo(tabPoney[numero], numero)
     .then(() => {
       tabPoney[numero].isAvailable = true;
@@ -25,7 +34,7 @@ spideyInterval = setInterval(() => {
 }, 5000);
 
 transformationInterval = setInterval(() => {
-  var numero = Math.floor((Math.random() * nbPoney));
+  const numero = Math.floor((Math.random() * superiorPow(tabPoney.length)) % tabPoney.length);
   dead.helptransformation(tabPoney[numero], nbPoney)
     .then(() => {
       console.log('evolution du poney en licorne'.inverse.green + '\n \n');
@@ -36,7 +45,7 @@ transformationInterval = setInterval(() => {
 }, 1001);
 
 regenerationInterval = setInterval(() => {
-  var numero1 = Math.floor((Math.random() * nbPoney));
+  const numero1 = Math.floor((Math.random() * superiorPow(tabPoney.length)) % tabPoney.length);
   dead.regeneration(tabPoney[numero1], numero1)
     .then(() => {
       console.log('\n'.green);
