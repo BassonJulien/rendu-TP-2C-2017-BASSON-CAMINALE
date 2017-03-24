@@ -1,67 +1,36 @@
-var events = require('events');
-var EventEmitter = require('events').EventEmitter;
+const EventEmitter = require('events').EventEmitter;
 
-const nuit = new EventEmitter();
-const jour = new EventEmitter();
-const soiree = new EventEmitter();
+const cycleEvents = new EventEmitter();
 
 class CycleTime {
+
   constructor() {
+    this.hours = 0;
 
+    this.nuite = null;
 
-    this.heures = 0;
-
-    this.nuite =null;
-
-    this.heuresInterval = setInterval(() => this.heure(), 1000);
-
-
-    nuit.on('nuit', function () {
-
-    });
-
-    jour.on('jour', function () {
-
-    });
-
-    soiree.on('soiree', function () {
-
-    });
-
-
-
+    this.hourInterval = setInterval(() => this.heure(), 1000);
   }
 
   heure() {
 
-    this.heures++;
-    //console.log(this.heures);
+    this.hours++;
+    //console.log(this.hours);
 
-    if (this.heures >= 0 && this.heures < 8) {
-      // console.log("il fait nuit ");
-      nuit.emit('nuit',this.nuite=true);
+    if (this.hour === 7) {
+      // console.log("il fait cycleEvents ");
+      cycleEvents.emit('Cycle change', 'day');
 
-    }
-    if (this.heures >= 8 && this.heures <= 19) {
-      // console.log("il fait jour ici");
-      jour.emit('jour',this.nuite=false);
+    } else if (this.hours === 20) {
+      cycleEvents.emit('Cycle change', 'night');
 
     }
-
-    if (this.heures > 19 && this.heures <= 24) {
-      // console.log("il fait sombre");
-      soiree.emit('soiree',this.nuite=false);
-      if (this.heures === 24) {
-        this.heures = 0;
-      }
-    }
-
-
   }
 
-
+  stopClock () {
+    clearInterval(this.hourInterval)
+  }
 }
 
 
-
-module.exports = {CycleTime};
+module.exports = {CycleTime, cycleEvents};

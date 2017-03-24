@@ -14,9 +14,9 @@ class Spiderman {
         setTimeout(() => {
           tab.isAvailable = false;
           console.log('spidey ride la licorne :  '.red.bgWhite.bold+num+ '\n \n');
-           console.log('__/~|____')
-          console.log('[4x4-----]  ~~~~~')
-            console.log('(_) (_)  \n \n')
+          console.log('__/~|____');
+          console.log('[4x4-----]  ~~~~~');
+          console.log('(_) (_)  \n \n');
           resolve();
         }, 3000);
       }

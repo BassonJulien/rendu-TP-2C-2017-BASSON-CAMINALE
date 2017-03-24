@@ -1,7 +1,7 @@
 const {Deadpool} = require('./deadpool');
 const {Poney}=require('./poney');
 const {Spiderman}=require('./spiderman')
-const {CycleTime}=require('./cycletime');
+const {CycleTime, cycleEvents}=require('./cycletime');
 var colors = require('colors');
 
 const nbPoney = 4;
@@ -11,7 +11,7 @@ const spidey = new Spiderman();
 
 TabPoney = [];
 for (var iVal = 0; iVal < nbPoney; iVal++) {
-  TabPoney.push(new Poney());
+  TabPoney.push(new Poney(cycleEvents));
 }
 
 
