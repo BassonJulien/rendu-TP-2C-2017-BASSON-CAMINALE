@@ -4,7 +4,6 @@ const {Poney}=require('./poney');
 class Spiderman {
 
   constructor() {
-    this.energie = 10;
   }
 
   rodeo(tab,num) {

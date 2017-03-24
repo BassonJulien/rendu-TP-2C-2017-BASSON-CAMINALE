@@ -5,31 +5,29 @@ const {CycleTime, cycleEvents}=require('./cycletime');
 var colors = require('colors');
 
 const nbPoney = 4;
-const dead = new Deadpool();
+const dead = new Deadpool(cycleEvents);
 const cycle = new CycleTime();
 const spidey = new Spiderman();
 
-TabPoney = [];
+tabPoney = [];
 for (var iVal = 0; iVal < nbPoney; iVal++) {
-  TabPoney.push(new Poney(cycleEvents));
+  tabPoney.push(new Poney(cycleEvents));
 }
-
 
 spideyInterval = setInterval(() => {
   var numero = Math.floor((Math.random() * nbPoney) + 0);
-  spidey.rodeo(TabPoney[numero], numero)
+  spidey.rodeo(tabPoney[numero], numero)
     .then(() => {
-      TabPoney[numero].isAvailable = true;
+      tabPoney[numero].isAvailable = true;
     })
     .catch(() => {
 
     });
 }, 5000);
 
-
 transformationInterval = setInterval(() => {
-  var numero = Math.floor((Math.random() * nbPoney) + 0);
-  dead.helptransformation(TabPoney[numero], nbPoney)
+  var numero = Math.floor((Math.random() * nbPoney));
+  dead.helptransformation(tabPoney[numero], nbPoney)
     .then(() => {
       console.log('evolution du poney en licorne'.inverse.green + '\n \n');
 
@@ -41,8 +39,8 @@ transformationInterval = setInterval(() => {
 }, 1001);
 
 regenerationInterval = setInterval(() => {
-  var numero1 = Math.floor((Math.random() * nbPoney) + 0);
-  dead.regeneration(TabPoney[numero1], numero1)
+  var numero1 = Math.floor((Math.random() * nbPoney));
+  dead.regeneration(tabPoney[numero1], numero1)
     .then(() => {
       console.log('\n'.green);
 

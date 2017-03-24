@@ -5,24 +5,39 @@ const coeff = 5;
 
 class Deadpool {
 
-  constructor() {
+  constructor(ev) {
+    this.energyDeadpool = 80;
+    this.maxEnergyDeadpool = 100;
+    this.night=null;
+    this.startListeners(ev);
 
-    const poney = new Poney();
-    this.energie = 80;
-    this.maxEnergieDeadpool = 100;
-    this.EnergieInterval = setInterval(() => this.EnergieDeadPool(), 500);
+    this.EnergieInterval = setInterval(() => this.EnergyDeadPool(), 500);
 
 
   }
 
-  helptransformation(tab, nbponey) {
+  startListeners(ev) {
+    ev.on('Cycle change', period => {
+      if (period === 'night') {
+
+        this.night=true;
+      }
+      else
+      {
+        this.night=false;
+      }
+
+    });
+  }
+
+  helptransformation(tab, nbPoney) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (tab.energy >= 50 && tab.isUnicorn === false && nbponey < 14 &&tab.isAvailable===true) {
+        if (tab.energyPoney >= 50 && tab.isUnicorn === false && nbPoney < 14 &&tab.isAvailable===true) {
           //on ne veut pas plus de 15 poney sinon la chance d'évolution est trop faible
-          if (tab.energy >= 50 && tab.energy <= 70) {
+          if (tab.energyPoney >= 50 && tab.energyPoney <= 70) {
             //gere les chances de succes de facon random + en prenant compte le nbr de poney
-            let chance = (Math.floor((Math.random() * 15) + 1)) * (coeff / nbponey);
+            let chance = (Math.floor((Math.random() * 15) + 1)) * (coeff / nbPoney);
             if (chance >= 10) {
               console.log('ohohoh TRANSFORMATION ?!'.inverse + '\n');
               tab.isUnicorn = true;
@@ -30,8 +45,8 @@ class Deadpool {
               resolve();
             }
           }
-          if (tab.energy >= 71 && tab.energy < 100) {
-            let chance1 = Math.floor((Math.random() * 15) + 7) * (coeff / nbponey);
+          if (tab.energyPoney >= 71 && tab.energyPoney < 100) {
+            let chance1 = Math.floor((Math.random() * 15) + 7) * (coeff / nbPoney);
             if (chance1 >= 10) {
               console.log('ohohoh TRANSFORMATION ?!'.inverse + '\n');
               tab.isUnicorn = true;
@@ -39,7 +54,7 @@ class Deadpool {
               resolve();
             }
           }
-          if (tab.energy === 100) {
+          if (tab.energyPoney === 100) {
             let chance2 = 10;
             if (chance2 >= 10) {
               console.log('ohohoh TRANSFORMATION ?!'.inverse + '\n');
@@ -56,16 +71,16 @@ class Deadpool {
     });
   }
 
-  EnergieDeadPool() {
-    if (this.energie > 0) {
-      if (time.nuite === true) {
-        this.energie -= 2;
-        console.log('deadpool :'.underline.green + this.energie + ' PV'.green + '\n');
+  EnergyDeadPool() {
+    if (this.energyDeadpool > 0) {
+      if (this.night === true) {
+        this.energyDeadpool -= 2;
+        console.log('deadpool :'.underline.green + this.energyDeadpool + ' PV'.green + '\n');
       }
       else {
 
-        this.energie--;
-        console.log('deadpool :'.underline.green + this.energie + ' PV'.green + '\n');
+        this.energyDeadpool--;
+        console.log('deadpool :'.underline.green + this.energyDeadpool + ' PV'.green + '\n');
       }
     }
   }
@@ -74,10 +89,10 @@ class Deadpool {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (tab.isUnicorn === true) {//deadpool peut se regénérer qu'avec des licornes
-          if (this.energie <= 70) {
+          if (this.energyDeadpool <= 70) {
             this.regeneration(tab, numero); //à partir de 35 de vie deadpool peut se régénéré
-            this.energie = this.maxEnergieDeadpool;
-            tab.energy = 0;//on met l'énergie du poney à 0
+            this.energyDeadpool = this.maxEnergyDeadpool;
+            tab.energyPoney = 0;//on met l'énergie du poney à 0
             tab.isUnicorn = false;//la licorne redevient poney
             console.log('deadpool c est regenere'.green + '\n \n');
             console.log('la licorne : '.green + numero + ' redevient poney'.green + '\n \n');

@@ -8,18 +8,18 @@ class Poney {
     this.isUnicorn = false;
     this.isAvailable = true;
     this.startListeners(ev);
-    this.night=null;
+    this.night=false;
   }
 
   startListeners(ev) {
     ev.on('Cycle change', period => {
       if (period === 'night') {
 
-        night=true;
+        this.night=true;
       }
       else
       {
-        night=false;
+        this.night=false;
       }
 
     });
@@ -43,12 +43,8 @@ class Poney {
             this.energyPoney = 100;
           }
           console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow + `  la licorne a : ${this.energyPoney}` + ' PV'.yellow); // rainbow
-
         }
-
       }
-
-
       // cas ou il fait jour
       if (this.night === false) {
         if (this.isUnicorn === true) {
@@ -56,7 +52,6 @@ class Poney {
             this.energyPoney = 100;
           }
           console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow + `  la licorne a : ${this.energyPoney}` + ' PV'.yellow); // rainbow
-
         }
         if (this.isUnicorn === false) {
           this.energyPoney += 10;
@@ -64,9 +59,7 @@ class Poney {
             this.energyPoney = 100;
           }
           console.log('ZZZZZZZzzzzzzzzzzzzzzz'.rainbow + `  le poney   a : ${this.energyPoney}` + ' PV'.yellow); // rainbow
-
         }
-
       }
     }
     else {
