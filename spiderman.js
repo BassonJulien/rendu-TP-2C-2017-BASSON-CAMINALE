@@ -1,16 +1,15 @@
 
-  let instance = null;
+let instance = null;
 
 class Spiderman {
-
   constructor() {
     if (!instance) {
       instance = this;
-    };
+    }
     return instance;
   }
 
-  rodeo(tab,num) {
+  rodeo(tab, num) {
     return new Promise((resolve, reject) => {
       const rdRodeo = Math.floor((Math.random() * 3) + 1);
       if (rdRodeo > 2) {

@@ -1,3 +1,4 @@
+/* eslint-disable no-use-extend-native/no-use-extend-native */
 class Poney {
 
   constructor(ev) {
@@ -18,10 +19,7 @@ class Poney {
       }
     });
   }
-
   rest() {
-
-
     if (this.isAvailable === true) {
       if (this.night === true) {
         if (this.isUnicorn === false) {
