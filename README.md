@@ -25,7 +25,9 @@ npm start
 ```
 Introduction :
 ---------------
-
+We have 4 class : One for poney object whith some function who permit to manage poney life and it avaibility. The deapool class is unique and manage the tranformation of the poney and regener him.
+ Also the spiderman class is unique and he just made some ride on the licornes through the function rodeo.
+ The last one is cycletime, it permit to manage night and day with events. Life, transformation and regeneration depend of it.
 
 Index.js :
 --------------------------------------------------------
@@ -40,7 +42,7 @@ for (let iVal = 0; iVal < nbPoney; iVal++) {
 }
 ```
 
-We have three setInteval, this permit to call our functions with an time interval,
+We have three setInteval in the index.js, this permit to call our functions with an time interval,
 in this case each  1001ms we call helptransformation from dead. In this function 
 we return a promise where if it resolve() we take the return promise by .then()
 and  if it reject() we catch it by .catch()
@@ -56,3 +58,4 @@ transformationInterval = setInterval(() => {
     });
 }, 1001);
 ```
+
