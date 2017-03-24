@@ -25,6 +25,7 @@ class Poney {
     });
   }
 
+
   seReposer() {
 
     if (this.isAvailable === true) {

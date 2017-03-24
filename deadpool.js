@@ -2,29 +2,34 @@ const {Poney}=require('./poney');
 const {CycleTime}=require('./cycletime');
 const time = new CycleTime();
 const coeff = 5;
+let instance = null;
+const EventEmitter = require('events').EventEmitter;
+
+
 
 class Deadpool {
 
   constructor(ev) {
-    this.energyDeadpool = 80;
-    this.maxEnergyDeadpool = 100;
-    this.night=null;
-    this.startListeners(ev);
+    if (!instance) {
+      instance = this;
+      this.energyDeadpool = 80;
+      this.maxEnergyDeadpool = 100;
+      this.night = null;
+      this.startListeners(ev);
 
-    this.EnergieInterval = setInterval(() => this.EnergyDeadPool(), 500);
-
-
+      this.EnergieInterval = setInterval(() => this.EnergyDeadPool(), 500);
+    }
+    return instance;
   }
 
   startListeners(ev) {
     ev.on('Cycle change', period => {
       if (period === 'night') {
 
-        this.night=true;
+        this.night = true;
       }
-      else
-      {
-        this.night=false;
+      else {
+        this.night = false;
       }
 
     });
@@ -33,7 +38,7 @@ class Deadpool {
   helptransformation(tab, nbPoney) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (tab.energyPoney >= 50 && tab.isUnicorn === false && nbPoney < 14 &&tab.isAvailable===true) {
+        if (tab.energyPoney >= 50 && tab.isUnicorn === false && nbPoney < 14 && tab.isAvailable === true) {
           //on ne veut pas plus de 15 poney sinon la chance d'évolution est trop faible
           if (tab.energyPoney >= 50 && tab.energyPoney <= 70) {
             //gere les chances de succes de facon random + en prenant compte le nbr de poney
@@ -55,16 +60,20 @@ class Deadpool {
             }
           }
           if (tab.energyPoney === 100) {
-            let chance2 = 10;
+            let chance2 = Math.floor((Math.random() * 11) + 3)
             if (chance2 >= 10) {
               console.log('ohohoh TRANSFORMATION ?!'.inverse + '\n');
               tab.isUnicorn = true;
               resolve();
             }
+            else{
+              tab.energyPoney=0;
+            }
           }
         }
         else {
           reject();
+
         }
 
       }, 1000);

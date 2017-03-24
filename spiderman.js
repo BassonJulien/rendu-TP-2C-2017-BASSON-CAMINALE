@@ -1,9 +1,13 @@
 const {Poney}=require('./poney');
-
+let instance = null;
 
 class Spiderman {
 
   constructor() {
+    if (!instance) {
+      instance = this;
+    };
+    return instance;
   }
 
   rodeo(tab,num) {
