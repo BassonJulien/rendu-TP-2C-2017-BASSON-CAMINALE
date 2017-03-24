@@ -14,7 +14,7 @@
 ## Contents
 * [Installation](#installation)
 * [Introduction](#introduction)
-* [Index.js](#index.js)
+* [Index.js](#index)
 
 ## Installation:
 
@@ -38,7 +38,8 @@ We have 4 class : One for poney object whith some function who permit to manage 
  Also the spiderman class is unique and he just made some ride on the licornes through the function rodeo.
  The last one is cycletime, it permit to manage night and day with events. Life, transformation and regeneration depend of it.
 
-## Index.js
+## Index
+
 We make an array of poney and we push an instance of poney in the array 'tabPoney'
 ```js
 const {Poney}=require('./poney');
