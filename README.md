@@ -8,8 +8,12 @@
 	<br>
 </h1>
 
-To install the project, please follow the instructions :
---------------------------------------------------------
+
+* [Installation](#Installation)
+* [Introduction](#Introduction)
+
+##Installation:
+
 
 ```
 git clone git@github.com:chazzfit/rendu-TP-2C-2017-BASSON-CAMINALE.git
@@ -23,8 +27,9 @@ cd paths/rendu-TP-2C-2017-BASSON-CAMINALE
 npm i
 npm start
 ```
-Introduction :
----------------
+
+## Introduction
+
 We have 4 class : One for poney object whith some function who permit to manage poney life and it avaibility. The deapool class is unique and manage the tranformation of the poney and regener him.
  Also the spiderman class is unique and he just made some ride on the licornes through the function rodeo.
  The last one is cycletime, it permit to manage night and day with events. Life, transformation and regeneration depend of it.
