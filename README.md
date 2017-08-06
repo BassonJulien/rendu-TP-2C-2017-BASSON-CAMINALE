@@ -7,6 +7,7 @@
 	<br>
 	<br>
 </h1>
+<h1 align="center"> <br> <br> <img width="360" src="https://www.rse-groupeinseec.com/wp-content/uploads/2015/10/Logo-carre3-300x300.jpg"> <br> <br> <br> </h1>
 
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
